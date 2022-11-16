@@ -1,9 +1,15 @@
 import './App.css';
+import React from 'react'
+import { Nav } from './componentes/navbar/Nav';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <>
+      <Nav/>
+      <div className='contenedor'>
+
+      </div>
+    </>
   );
 }
 

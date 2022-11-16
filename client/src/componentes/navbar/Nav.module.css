@@ -1,0 +1,85 @@
+.contenedor{
+    margin: auto;
+    width: 90%;
+    max-width: 1300vh;
+}
+
+.menu{
+    background: #8c43cc;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+
+.menu .contenedor_enlaces_nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu .contenedor_enlaces_nav .enlaces a{
+    color: #000;
+    border: 1px solid transparent;
+    padding: 7px;
+    border-radius: 3px;
+    font-size: 17px;
+}
+
+.menu .contenedor_enlaces_nav .enlaces button{
+    padding: 7px;
+    color: #000;
+    background: none;
+    font-size: 17px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.menu .contenedor_enlaces_nav .enlaces .btn_buscar{
+    color: #fff;
+    font-size: 16px;
+    margin: 10px;
+    border: 1px solid transparent;
+    border-radius: 40%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.menu .contenedor_enlaces_nav .enlaces a:hover{
+    border: 1px solid #000;
+}
+
+.menu .contenedor_enlaces_nav .enlaces button:hover{
+    border: 1px solid #fff;
+}
+
+.logotipo img{
+    width: 90px;
+}
+
+
+.menu .contenedor_botones_menu{
+    display: none; 
+    justify-content: space-between;
+}
+
+.menu .contenedor_botones_menu button{
+    font-size: 20px;
+    color: #fff;
+    padding: 15px 20px;
+    border: 1px solid transparent;
+    display: inline-block;
+    cursor: pointer;
+    background: none;
+}
+
+.menu .contenedor_botones_menu button:hover {
+    border: 1px solid #fff;
+  }
+
+  .menu .contenedor_botones_menu .btn_logotipo img{
+      width: 60px;
+  }
+
+  .menu .contenedor_botones_menu .btn_logotipo.activo img{
+   display: none;
+}
