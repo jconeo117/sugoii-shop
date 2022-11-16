@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../../models/users/user')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
+
 
  const RegisterUser = async (req,res)=>{
    
@@ -9,7 +12,7 @@ const User = require('../../models/users/user')
         const UserExist = await User.findOne({email:req.body.email})
 
         if(UserExist){
-            res.json({Error:"El correo ya esta registrado"})
+           return res.json({Error:"El correo ya esta registrado"})
         }
 
         const salt = await bcrypt.genSalt(10)
@@ -20,14 +23,28 @@ const User = require('../../models/users/user')
             userName:req.body.userName,
             email:req.body.email,
             password:password
-
         })
-
-        await user.save()
-        res.json(
+        
+        const token = jwt.sign(
+            { user_id: user._id },
+            process.env.TOKEN_KEY,
             {
-                status:"funcionando",
-                usuario:user
+              expiresIn: "2h",
+            }
+          );
+
+
+        if(process.env.ADMIN_EMAIL.includes(user.email)){
+            user.roles[0] = 'Admin'
+        }else{
+            user.roles[0] = 'User'
+        }
+        
+        await user.save()
+        res.json({
+            message:"bienvenido",
+            usuario:user,
+            key:token
         })
     }
     catch(err){
@@ -46,11 +63,22 @@ const LoginUser = async (req,res)=>{
         const validPassword = await bcrypt.compare(req.body.password, user.password)
         if(!validPassword) return res.status(400).json({error: 'Constraseña invalida'})
     
+        const token = jwt.sign(
+            { user_id: user._id },
+            process.env.TOKEN_KEY,
+            {
+              expiresIn: "2h",
+            }
+        );
+
+
         res.json({
-            error: null,
             message: 'bienvenido',
-            daata:user
+            usuario:user,
+            key:token
         })
+
+
     }catch(err){
         res.status(404).json({
             error:"error type: "+err

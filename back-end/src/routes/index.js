@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 
+//CONTROLADORES
+const verifyToken = require('../controllers/users/verifyToken')
+
 //PRODUCTOS
 const {
      GetProducts,
@@ -22,11 +25,6 @@ const {
      LoginUser
 } = require('./users/user')
 
-const {
-     RegisterAdmin,
-     LoginAdmin
-} = require('./users/admin')
-
 //REVIEWS
 const {
      PostReview
@@ -37,9 +35,9 @@ const {
 //RUTAS PARA LOS PRODUCTOS
 router.get('/products', GetProducts)
 router.get('/products/:id', GetProductsById)
-router.post('/products', PostProducts)
-router.put('/products/:id', UpdateProduct)
-router.delete('/products/:id', DeleteProducts)
+router.post('/products', verifyToken, PostProducts)
+router.put('/products/:id', verifyToken, UpdateProduct)
+router.delete('/products/:id', verifyToken, DeleteProducts)
 
 //RUTA PARA AÑADIR Y REMOVER FAVORITOS
 router.post('/favorite/add', addFav)
@@ -51,9 +49,5 @@ router.post('/review/:id', PostReview)
 //REGISTRO Y LOGIN DE USUARIOS Y ADMIN
 router.post('/user/register',RegisterUser)
 router.post('/user/login',LoginUser)
-router.post('/admin/register',RegisterAdmin)
-router.post('/admin/login',LoginAdmin)
-
-
 
 module.exports = router

@@ -35,7 +35,11 @@ const UserSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'buy'
     }],
-})
+    roles:[{
+        type:String,
+        enum:['User', 'Admin']
+    }]
+}, {versionKey:false})
 
 
 module.exports = mongoose.model('Users', UserSchema)

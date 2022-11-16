@@ -9,6 +9,10 @@ const Products = new Schema({
     price: Number, // aca paso de number a string
     category:String,
     stock:Boolean,
+    rating:{
+        type:Number,
+        default:0
+    },
     reviews: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Reviews'
