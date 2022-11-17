@@ -27,7 +27,8 @@ const {
 
 //REVIEWS
 const {
-     PostReview
+     PostReview,
+     DeleteReviews
 } = require('./products/reviews')
 
 
@@ -44,7 +45,8 @@ router.post('/favorite/add', addFav)
 router.put('/favorite/remove', removeFav)
 
 //RUTA PARA AÑADIR REVIEWS
-router.post('/review/:id', PostReview)
+router.post('/review/post/:id', PostReview)
+router.put('/review/delete/:id',verifyToken, DeleteReviews)
 
 //REGISTRO Y LOGIN DE USUARIOS Y ADMIN
 router.post('/user/register',RegisterUser)
