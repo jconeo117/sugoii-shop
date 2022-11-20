@@ -4,11 +4,26 @@ app.use(express.json())
 
 //controladores
 const {
+    getReviews,
     addReview,
     deleteReview
 } =require('../../controllers/products/reviews')
 
 
+const GetReviews = async (req,res)=>{
+    try{
+        const reviews = await getReviews(req.params)
+
+        res.json({
+            message:"funcionando",
+            data:reviews
+        })
+    }catch(err){
+        res.status(404).json({
+            error:"error del tipo: "+err
+        })
+    }
+}
 
 const PostReview = async(req,res)=>{
    try{
@@ -40,6 +55,7 @@ const DeleteReviews = async(req,res)=>{
 }
 
 module.exports={
+    GetReviews,
     PostReview,
     DeleteReviews
 }

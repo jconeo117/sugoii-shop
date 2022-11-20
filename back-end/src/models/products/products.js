@@ -17,9 +17,9 @@ const Products = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Reviews'
     }],
-    buyId: [{
+    purchaseId: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'buy'
+        ref: 'Purchase'
     }],
     photos:String
 },{versionKey:false})

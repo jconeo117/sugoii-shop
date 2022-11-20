@@ -1,8 +1,15 @@
-const mongoose = require('mongoose')
 const Product = require('../../models/products/products')
 const Reviews = require('../../models/products/reviews')
 const User = require('../../models/users/user')
 
+
+const getReviews = async({id})=>{
+    const reviews = await Reviews.find()
+    
+    const reviewsProduct = reviews.filter(el=>el.ProductId.toString() === id) 
+
+    return reviewsProduct
+}
 
 const addReview = async({userId, rating, comment},{id})=>{
 
@@ -45,6 +52,7 @@ const deleteReview = async ({user_id}, {id}, {reviewId})=>{
 }
 
 module.exports={
+    getReviews,
     addReview,
     deleteReview
 }

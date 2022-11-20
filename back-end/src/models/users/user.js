@@ -31,9 +31,9 @@ const UserSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Products'
     }],
-    buyId: [{
+    purchaseId: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'buy'
+        ref: 'Purchase'
     }],
     roles:[{
         type:String,

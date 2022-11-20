@@ -17,6 +17,13 @@ const GetProductsById = async (req,res) => {
     res.json(product)
 }
 
+const GetProductsbyCategory= async (req,res)=>{
+    const {category} = req.body
+    const products = await Products.find()
+    const product_category = products.filter(el=>el.category === category)
+    res.json(product_category)
+}
+
 const PostProducts = async (req,res)=>{
     try{
         
