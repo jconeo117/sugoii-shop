@@ -8,6 +8,7 @@ const Products = new Schema({
     type: String, //cambie por un array
     price: Number, // aca paso de number a string
     category:String,
+    serie:String,
     stock:Boolean,
     rating:{
         type:Number,
@@ -21,7 +22,7 @@ const Products = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Purchase'
     }],
-    photos:String
+    photos:[String]
 },{versionKey:false})
 
 module.exports = mongoose.model('Products', Products)

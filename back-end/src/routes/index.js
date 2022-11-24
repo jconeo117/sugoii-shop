@@ -8,6 +8,8 @@ const verifyToken = require('../controllers/users/verifyToken')
 const {
      GetProducts,
      GetProductsById,
+     GetProductsbyCategory,
+     GetProductsbySerie,
      PostProducts,
      UpdateProduct,
      DeleteProducts
@@ -32,16 +34,32 @@ const {
      DeleteReviews
 } = require('./products/reviews')
 
+//SLIDER
+const {
+     SliderProducts,
+     SliderNews
+} =require('./products/slider')
+//COMPRAS Y ENCARGOS
+const {
+     GetPurchases
+}=require('./products/purchases')
 
 
 //RUTAS PARA LOS PRODUCTOS
 router.get('/products', GetProducts)
 router.get('/products/:id', GetProductsById)
+router.get('/products/c/:category', GetProductsbyCategory)
+router.get('/products/s/:serie', GetProductsbySerie)
 router.post('/products', verifyToken, PostProducts)
 router.put('/products/:id', verifyToken, UpdateProduct)
 router.delete('/products/:id', verifyToken, DeleteProducts)
 
+//RUTA PARA EL SLIDER
+router.get('/slider', SliderProducts)
+router.get('/slider/news', SliderNews)
 
+//RUTA PARA LAS COMPRAS Y PEDIDOS
+router.get('/purchase/:id', verifyToken, GetPurchases)
 
 //RUTA PARA AÑADIR Y REMOVER FAVORITOS
 router.post('/favorite/add', verifyToken, addFav)

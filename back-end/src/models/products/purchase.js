@@ -5,10 +5,10 @@ const Purchase = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users'
     },
-    productsId: {
+    productsId: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Products'
-    },
+    }],
   
     totalPrice: Number
 }, { versionKey: false });

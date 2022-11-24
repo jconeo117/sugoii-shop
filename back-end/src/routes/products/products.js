@@ -7,7 +7,16 @@ const Products = require('../../models/products/products')
 const User = require('../../models/users/user')
 
 const GetProducts = async (req,res) => {
+
+    const {name} = req.query
+   
     const product  = await Products.find()
+
+    if(name){
+        const productName = product.filter((item)=>item.name.includes(name))
+        return res.json(productName)
+    }
+    
     res.json(product)
 }
 
@@ -18,10 +27,19 @@ const GetProductsById = async (req,res) => {
 }
 
 const GetProductsbyCategory= async (req,res)=>{
-    const {category} = req.body
+    const {category} = req.params
+    console.log(category)
     const products = await Products.find()
     const product_category = products.filter(el=>el.category === category)
     res.json(product_category)
+}
+
+const GetProductsbySerie= async (req,res)=>{
+    const {serie} = req.params
+    console.log(serie)
+    const products = await Products.find()
+    const product_serie = products.filter(el=>el.serie === serie)
+    res.json(product_serie)
 }
 
 const PostProducts = async (req,res)=>{
@@ -89,6 +107,8 @@ const DeleteProducts = async (req,res) => {
 module.exports = {
     GetProducts,
     GetProductsById,
+    GetProductsbyCategory,
+    GetProductsbySerie,
     PostProducts,
     UpdateProduct,
     DeleteProducts
