@@ -1,0 +1,82 @@
+.slide{
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+.cards_container {
+    display: flex;
+    color: #333;
+    padding: 0 2rem;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.cards_container::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    flex: 1 0 250px;
+    box-shadow: 0 1px 1rem -4px #000;
+    background: #fff;
+    margin: 1rem;
+    overflow: hidden;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+}
+
+.card img {
+    width: 250px;
+    height: 250px;
+    -o-object-fit: center;
+    object-fit: center;
+}
+
+
+.card_content {
+    padding: 1rem;
+}
+
+.slider_icon.left, .slider_icon.right {
+    background: white;
+    border-radius: 100%;
+    position: absolute;
+    opacity: 0.5;
+    box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 12%);
+    cursor: pointer;
+}
+
+.slider_icon.left{
+    left: 0;
+}
+
+.slider_icon.right{
+    right: 0;
+}
+
+.slider_icon.left:hover, .slider_icon.right:hover{
+    opacity: 1;
+}
+
+
+@media screen and (max-width: 625px) {
+    .container {
+        width: 100%;
+    }
+
+    .cards_container {
+        padding: 0.5rem;
+    }
+
+    .card {
+        margin: 0.5rem;
+    }
+}

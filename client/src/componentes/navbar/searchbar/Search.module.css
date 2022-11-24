@@ -26,6 +26,7 @@
   
   .icon {
     position: absolute;
+    cursor: pointer;
     left: 1rem;
     fill: #777;
     width: 1rem;
